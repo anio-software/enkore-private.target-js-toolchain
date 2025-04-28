@@ -16,7 +16,7 @@ export const config: unknown = createConfig({
 				orgName: "@enkore-types"
 			},
 			externalPackages: [
-				"@enkore/typescript",
+				"@enkore-private/target-js-typescript",
 				"@enkore-private/target-js-babel",
 				"@enkore-private/target-js-rollup"
 			]

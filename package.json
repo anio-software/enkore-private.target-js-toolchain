@@ -12,7 +12,7 @@
   "dependencies": {
     "@enkore-private/target-js-babel": "^0.0.1",
     "@enkore-private/target-js-rollup": "^0.0.1",
-    "@enkore/typescript": "^0.0.16"
+    "@enkore-private/target-js-typescript": "^0.0.1"
   },
   "devDependencies": {
     "@enkore-target/js-node": "^0.0.9",
