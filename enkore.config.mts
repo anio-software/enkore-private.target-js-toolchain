@@ -14,13 +14,13 @@ export const config: unknown = createConfig({
 			publish: {
 				withExactDependencyVersions: true,
 				withPackageNames: [
-					"@enkore-tc/target-js-none",
-					"@enkore-tc/target-js-node",
-					"@enkore-tc/target-js-web"
+					"@enkore-toolchain/js-none",
+					"@enkore-toolchain/js-node",
+					"@enkore-toolchain/js-web"
 				]
 			},
 			createTypesPackage: {
-				orgName: "@enkore-tc-types"
+				orgName: "@enkore-toolchain-types"
 			},
 			externalPackages: [
 				"@enkore-private/target-js-typescript",
