@@ -16,7 +16,9 @@ export const config: unknown = createConfig({
 				withPackageNames: [
 					"@enkore-toolchain/js-none",
 					"@enkore-toolchain/js-node",
-					"@enkore-toolchain/js-web"
+					"@enkore-toolchain/js-web",
+					// legacy, will be removed
+					"@enkore/target-js-toolchain"
 				]
 			},
 			createTypesPackage: {
