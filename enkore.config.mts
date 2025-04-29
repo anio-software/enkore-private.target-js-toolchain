@@ -11,7 +11,9 @@ export const config: unknown = createConfig({
 			preprocess: {
 				expandStarExports: true
 			},
-			publishWithExactDependencyVersions: true,
+			publish: {
+				withExactDependencyVersions: true
+			},
 			createTypesPackage: {
 				orgName: "@enkore-types"
 			},
