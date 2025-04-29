@@ -15,8 +15,8 @@
     "@enkore-private/target-js-typescript": "^0.0.1"
   },
   "devDependencies": {
-    "@enkore-target/js-node": "^0.0.9",
+    "@enkore-target/js-node": "^0.0.10",
     "@enkore/core": "^0.6.7",
-    "enkore": "^0.0.25"
+    "enkore": "^0.0.26"
   }
 }
