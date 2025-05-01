@@ -1,6 +1,6 @@
 {
   "name": "@enkore/target-js-toolchain",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "author": "Anio Software <info@anio.software>",
   "description": "Toolchain for JavaScript targets.",
   "license": "MIT",
