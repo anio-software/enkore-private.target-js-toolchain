@@ -31,7 +31,7 @@ export const config: unknown = createConfig({
 						isPublicRelease ? {
 							name: "@enkore-types/<PN>",
 							publishWithProvenance: true
-						} : "@asin-types/<FQPN_FLAT>"
+						} : "@asint-types/<FQPN_FLAT>"
 					]
 				}
 			},
