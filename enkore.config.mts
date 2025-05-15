@@ -22,7 +22,7 @@ export const config: unknown = createConfig({
 				],
 				typesPackage: {
 					withPackageNames: [
-						isPublicRelease ? "<FQPN>" : "@asin-types/<FQPN_FLAT>"
+						isPublicRelease ? "@enkore-types/<PN>" : "@asin-types/<FQPN_FLAT>"
 					]
 				}
 			},
