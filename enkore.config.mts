@@ -2,10 +2,6 @@ import {
 	createConfig,
 	createTargetJSNodeOptions
 } from "enkore/spec/factory"
-import path from "node:path"
-import {fileURLToPath} from "node:url"
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const isPublicRelease = (
 	process.env?.RELEASE_VERSION ?? ""
@@ -16,9 +12,8 @@ export const config: unknown = createConfig({
 		name: "js-node",
 		options: createTargetJSNodeOptions({
 			npm: {
-				configFilePath: path.join(__dirname, ".cicd", "npmrc")
+				configFilePath: "./.cicd/npmrc"
 			},
-
 			// needed or we end up with a broken build
 			preprocess: {
 				expandStarExports: true
