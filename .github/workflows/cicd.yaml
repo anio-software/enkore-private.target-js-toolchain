@@ -79,9 +79,6 @@ jobs:
           node-version: 23.x
           registry-url: "https://registry.npmjs.org"
 
-      - name: "Install node modules (if present)"
-        run: bash -c 'if [ -f package.json ]; then npm ci ; fi'
-
       # Place private key and certificate in order to have
       # access to npm-registry.anio.software
       - name: "Setup runner private key and certificate"
@@ -111,6 +108,9 @@ jobs:
           else
             printf "%s\n" "//npm-registry.anio.software/:_authToken=${{ secrets.ANIO_NPM_REGISTRY_GITHUB_CICD_TOKEN }}" >> ./.cicd/npmrc
           fi
+
+      - name: "Install node modules (if present)"
+        run: bash -c 'if [ -f package.json ]; then npm ci ; fi'
 
       #
       # Make sure package.json's version field and
