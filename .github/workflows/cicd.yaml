@@ -102,8 +102,8 @@ jobs:
             printf "%s\n" "//registry.npmjs.org/:_authToken=${{ secrets.ANIO_NPM_TOKEN }}" >> ./.cicd/npmrc
           else
             printf "%s\n" "registry=https://npm-registry.anio.software" >> ./.cicd/npmrc
-            printf "%s\n" "//npm-registry.anio.software/:keyfile=./.cicd/client.pkey" >> ./.cicd/npmrc
-            printf "%s\n" "//npm-registry.anio.software/:certfile=./.cicd/client.cert" >> ./.cicd/npmrc
+            printf "%s\n" "//npm-registry.anio.software/:keyfile=./client.pkey" >> ./.cicd/npmrc
+            printf "%s\n" "//npm-registry.anio.software/:certfile=./client.cert" >> ./.cicd/npmrc
             printf "%s\n" "//npm-registry.anio.software/:_authToken=${{ secrets.ANIO_NPM_REGISTRY_GITHUB_CICD_TOKEN }}" >> ./.cicd/npmrc
           fi
 
