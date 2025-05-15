@@ -18,11 +18,17 @@ export const config: unknown = createConfig({
 			publish: {
 				withExactDependencyVersions: true,
 				withPackageNames: [
-					isPublicRelease ? "<FQPN>" : "@asint/<FQPN_FLAT>"
+					isPublicRelease ? {
+						name: "<FQPN>",
+						publishWithProvenance: true
+					} : "@asint/<FQPN_FLAT>"
 				],
 				typesPackage: {
 					withPackageNames: [
-						isPublicRelease ? "@enkore-types/<PN>" : "@asin-types/<FQPN_FLAT>"
+						isPublicRelease ? {
+							name: "@enkore-types/<PN>",
+							publishWithProvenance: true
+						} : "@asin-types/<FQPN_FLAT>"
 					]
 				}
 			},
