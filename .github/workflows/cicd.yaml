@@ -56,6 +56,11 @@ jobs:
 
       - name: "Setup"
         uses: ./.github/actions/setup
+        with:
+          anio-pkey: ${{ secrets.ANIO_NPM_REGISTRY_GITHUB_CICD_PKEY }}
+          anio-cert: ${{ secrets.ANIO_NPM_REGISTRY_GITHUB_CICD_CERT }}
+          anio-registry-token: ${{ secrets.ANIO_NPM_REGISTRY_GITHUB_CICD_TOKEN }}
+          npm-token: ${{ secrets.ANIO_NPM_TOKEN }}
 
       - name: "Install node modules (if present)"
         run: bash -c 'if [ -f package.json ]; then npm ci ; fi'
@@ -84,6 +89,11 @@ jobs:
 
       - name: "Setup"
         uses: ./.github/actions/setup
+        with:
+          anio-pkey: ${{ secrets.ANIO_NPM_REGISTRY_GITHUB_CICD_PKEY }}
+          anio-cert: ${{ secrets.ANIO_NPM_REGISTRY_GITHUB_CICD_CERT }}
+          anio-registry-token: ${{ secrets.ANIO_NPM_REGISTRY_GITHUB_CICD_TOKEN }}
+          npm-token: ${{ secrets.ANIO_NPM_TOKEN }}
 
       - name: "Install node modules (if present)"
         run: bash -c 'if [ -f package.json ]; then npm ci ; fi'
