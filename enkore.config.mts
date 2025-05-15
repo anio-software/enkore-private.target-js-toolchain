@@ -11,6 +11,10 @@ export const config: unknown = createConfig({
 	target: {
 		name: "js-node",
 		options: createTargetJSNodeOptions({
+			npm: {
+				configFilePath: "./.cicd/npmrc"
+			},
+
 			// needed or we end up with a broken build
 			preprocess: {
 				expandStarExports: true
