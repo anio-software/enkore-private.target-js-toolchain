@@ -55,7 +55,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: "Setup"
-        uses: ./.github/actions/setup.yaml
+        uses: .github/actions/setup
 
       - name: "Install node modules (if present)"
         run: bash -c 'if [ -f package.json ]; then npm ci ; fi'
@@ -83,7 +83,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: "Setup"
-        uses: ./.github/actions/setup.yaml
+        uses: .github/actions/setup
 
       - name: "Install node modules (if present)"
         run: bash -c 'if [ -f package.json ]; then npm ci ; fi'
