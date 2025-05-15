@@ -54,7 +54,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: enkore-org/target-js-toolchain/.github/workflows/setup.yaml@main
+      - name: "Setup"
+        uses: enkore-org/target-js-toolchain/.github/workflows/setup.yaml@main
 
       - name: "Install node modules (if present)"
         run: bash -c 'if [ -f package.json ]; then npm ci ; fi'
@@ -81,7 +82,8 @@ jobs:
           node-version: 23.x
           registry-url: "https://registry.npmjs.org"
 
-      - uses: enkore-org/target-js-toolchain/.github/workflows/setup.yaml@main
+      - name: "Setup"
+        uses: enkore-org/target-js-toolchain/.github/workflows/setup.yaml@main
 
       - name: "Install node modules (if present)"
         run: bash -c 'if [ -f package.json ]; then npm ci ; fi'
