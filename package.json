@@ -17,6 +17,6 @@
   "devDependencies": {
     "@enkore-target/js-node": "^0.0.20",
     "@enkore/core": "^0.7.4",
-    "enkore": "^0.0.34"
+    "enkore": "^0.0.35"
   }
 }
