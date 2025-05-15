@@ -1,4 +1,4 @@
-name: Setup
+name: Setup private key, certificate and access tokens
 
 inputs:
   anio-pkey:
