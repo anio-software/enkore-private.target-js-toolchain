@@ -12,10 +12,15 @@ export const config: unknown = createConfig({
 				expandStarExports: true
 			},
 			publish: {
-				withExactDependencyVersions: true
-			},
-			createTypesPackage: {
-				orgName: "@enkore-types"
+				withExactDependencyVersions: true,
+				withPackageNames: [
+					"@asint/<FQPN_FLAT>"
+				],
+				typesPackage: {
+					withPackageNames: [
+						"@asin-types/<FQPN_FLAT>"
+					]
+				}
 			},
 			externalPackages: [
 				"@enkore-private/target-js-typescript",
