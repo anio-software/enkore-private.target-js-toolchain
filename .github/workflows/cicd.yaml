@@ -48,7 +48,7 @@ jobs:
       ANIO_CICD: "v0.11.0"
       ANIO_CICD_REPO: "${{ github.repository }}"
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -75,7 +75,7 @@ jobs:
       ANIO_CICD: "v0.11.0"
       ANIO_CICD_REPO: "${{ github.repository }}"
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
