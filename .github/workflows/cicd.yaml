@@ -95,16 +95,16 @@ jobs:
 
       - name: "Setup npmrc file"
         run: |
-          printf "" > ./.npmrc
+          printf "" > ./.cicd/.npmrc
 
           if [[ "${{ github.ref_name }}" == vp* ]]; then
-            printf "%s\n" "registry=https://registry.npmjs.org" >> ./.npmrc
-            printf "%s\n" "//registry.npmjs.org/:_authToken=${{ secrets.ANIO_NPM_TOKEN }}" >> ./.npmrc
+            printf "%s\n" "registry=https://registry.npmjs.org" >> ./.cicd/.npmrc
+            printf "%s\n" "//registry.npmjs.org/:_authToken=${{ secrets.ANIO_NPM_TOKEN }}" >> ./.cicd/.npmrc
           else
-            printf "%s\n" "registry=https://npm-registry.anio.software" >> ./.npmrc
-            printf "%s\n" "//npm-registry.anio.software/:keyfile=./.cicd/client.pkey" >> ./.npmrc
-            printf "%s\n" "//npm-registry.anio.software/:certfile=./.cicd/client.cert" >> ./.npmrc
-            printf "%s\n" "//npm-registry.anio.software/:_authToken=${{ secrets.ANIO_NPM_REGISTRY_GITHUB_CICD_TOKEN }}" >> ./.npmrc
+            printf "%s\n" "registry=https://npm-registry.anio.software" >> ./.cicd/.npmrc
+            printf "%s\n" "//npm-registry.anio.software/:keyfile=./.cicd/client.pkey" >> ./.cicd/.npmrc
+            printf "%s\n" "//npm-registry.anio.software/:certfile=./.cicd/client.cert" >> ./.cicd/.npmrc
+            printf "%s\n" "//npm-registry.anio.software/:_authToken=${{ secrets.ANIO_NPM_REGISTRY_GITHUB_CICD_TOKEN }}" >> ./.cicd/.npmrc
           fi
 
       #
