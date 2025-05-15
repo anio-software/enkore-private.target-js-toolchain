@@ -3,6 +3,10 @@ import {
 	createTargetJSNodeOptions
 } from "enkore/spec/factory"
 
+const isPublicRelease = (
+	process.env?.RELEASE_VERSION ?? ""
+).startsWith("vp")
+
 export const config: unknown = createConfig({
 	target: {
 		name: "js-node",
@@ -14,11 +18,11 @@ export const config: unknown = createConfig({
 			publish: {
 				withExactDependencyVersions: true,
 				withPackageNames: [
-					"@asint/<FQPN_FLAT>"
+					isPublicRelease ? "<FQPN>" : "@asint/<FQPN_FLAT>"
 				],
 				typesPackage: {
 					withPackageNames: [
-						"@asin-types/<FQPN_FLAT>"
+						isPublicRelease ? "<FQPN>" : "@asin-types/<FQPN_FLAT>"
 					]
 				}
 			},
