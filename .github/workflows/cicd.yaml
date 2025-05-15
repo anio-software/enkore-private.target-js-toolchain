@@ -54,35 +54,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      # Place private key and certificate in order to have
-      # access to npm-registry.anio.software
-      - name: "Setup runner private key and certificate"
-        env:
-          ANIO_NPM_REGISTRY_GITHUB_CICD_CERT: ${{ secrets.ANIO_NPM_REGISTRY_GITHUB_CICD_CERT }}
-          ANIO_NPM_REGISTRY_GITHUB_CICD_PKEY: ${{ secrets.ANIO_NPM_REGISTRY_GITHUB_CICD_PKEY }}
-        run: |
-          touch ./.cicd/client.cert
-          touch ./.cicd/client.pkey
-          chmod 0600 ./.cicd/client.cert ./.cicd/client.pkey
-          printf "%s" "$ANIO_NPM_REGISTRY_GITHUB_CICD_CERT" > ./.cicd/client.cert
-          printf "%s" "$ANIO_NPM_REGISTRY_GITHUB_CICD_PKEY" > ./.cicd/client.pkey
-          openssl x509 -in ./.cicd/client.cert -noout -text
-
-      - name: "Setup npmrc file"
-        run: |
-          printf "" > ./.cicd/npmrc
-
-          printf "%s\n" "registry=https://registry.npmjs.org" >> ./.cicd/npmrc
-          printf "%s\n" "@asint:registry=https://npm-registry.anio.software" >> ./.cicd/npmrc
-          printf "%s\n" "@asint-types:registry=https://npm-registry.anio.software" >> ./.cicd/npmrc
-          printf "%s\n" "//npm-registry.anio.software/:keyfile=../../.cicd/client.pkey" >> ./.cicd/npmrc
-          printf "%s\n" "//npm-registry.anio.software/:certfile=../../.cicd/client.cert" >> ./.cicd/npmrc
-
-          if [[ "${{ github.ref_name }}" == vp* ]]; then
-            printf "%s\n" "//registry.npmjs.org/:_authToken=${{ secrets.ANIO_NPM_TOKEN }}" >> ./.cicd/npmrc
-          else
-            printf "%s\n" "//npm-registry.anio.software/:_authToken=${{ secrets.ANIO_NPM_REGISTRY_GITHUB_CICD_TOKEN }}" >> ./.cicd/npmrc
-          fi
+      - uses: ./.github/workflows/setup.yaml
 
       - name: "Install node modules (if present)"
         run: bash -c 'if [ -f package.json ]; then npm ci ; fi'
@@ -109,35 +81,7 @@ jobs:
           node-version: 23.x
           registry-url: "https://registry.npmjs.org"
 
-      # Place private key and certificate in order to have
-      # access to npm-registry.anio.software
-      - name: "Setup runner private key and certificate"
-        env:
-          ANIO_NPM_REGISTRY_GITHUB_CICD_CERT: ${{ secrets.ANIO_NPM_REGISTRY_GITHUB_CICD_CERT }}
-          ANIO_NPM_REGISTRY_GITHUB_CICD_PKEY: ${{ secrets.ANIO_NPM_REGISTRY_GITHUB_CICD_PKEY }}
-        run: |
-          touch ./.cicd/client.cert
-          touch ./.cicd/client.pkey
-          chmod 0600 ./.cicd/client.cert ./.cicd/client.pkey
-          printf "%s" "$ANIO_NPM_REGISTRY_GITHUB_CICD_CERT" > ./.cicd/client.cert
-          printf "%s" "$ANIO_NPM_REGISTRY_GITHUB_CICD_PKEY" > ./.cicd/client.pkey
-          openssl x509 -in ./.cicd/client.cert -noout -text
-
-      - name: "Setup npmrc file"
-        run: |
-          printf "" > ./.cicd/npmrc
-
-          printf "%s\n" "registry=https://registry.npmjs.org" >> ./.cicd/npmrc
-          printf "%s\n" "@asint:registry=https://npm-registry.anio.software" >> ./.cicd/npmrc
-          printf "%s\n" "@asint-types:registry=https://npm-registry.anio.software" >> ./.cicd/npmrc
-          printf "%s\n" "//npm-registry.anio.software/:keyfile=../../.cicd/client.pkey" >> ./.cicd/npmrc
-          printf "%s\n" "//npm-registry.anio.software/:certfile=../../.cicd/client.cert" >> ./.cicd/npmrc
-
-          if [[ "${{ github.ref_name }}" == vp* ]]; then
-            printf "%s\n" "//registry.npmjs.org/:_authToken=${{ secrets.ANIO_NPM_TOKEN }}" >> ./.cicd/npmrc
-          else
-            printf "%s\n" "//npm-registry.anio.software/:_authToken=${{ secrets.ANIO_NPM_REGISTRY_GITHUB_CICD_TOKEN }}" >> ./.cicd/npmrc
-          fi
+      - uses: ./.github/workflows/setup.yaml
 
       - name: "Install node modules (if present)"
         run: bash -c 'if [ -f package.json ]; then npm ci ; fi'
