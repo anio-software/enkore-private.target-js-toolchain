@@ -19,6 +19,7 @@ runs:
       env:
         ANIO_NPM_REGISTRY_GITHUB_CICD_CERT: ${{ inputs.anio-cert }}
         ANIO_NPM_REGISTRY_GITHUB_CICD_PKEY: ${{ inputs.anio-pkey }}
+      shell: bash
       run: |
         touch ./.cicd/client.cert
         touch ./.cicd/client.pkey
@@ -28,6 +29,7 @@ runs:
         openssl x509 -in ./.cicd/client.cert -noout -text
 
     - name: "Setup npmrc file"
+      shell: bash
       run: |
         printf "" > ./.cicd/npmrc
 
