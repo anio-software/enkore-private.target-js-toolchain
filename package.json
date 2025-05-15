@@ -10,7 +10,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@enkore-private/target-js-babel": "^0.0.2",
+    "@enkore-private/target-js-babel": "^0.0.3",
     "@enkore-private/target-js-rollup": "^0.0.4",
     "@enkore-private/target-js-typescript": "^0.0.2"
   },
