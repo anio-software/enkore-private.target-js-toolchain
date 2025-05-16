@@ -16,31 +16,26 @@ runs:
     # Place private key and certificate in order to have
     # access to npm-registry.anio.software
     - name: "Setup runner private key and certificate"
-      env:
-        ANIO_NPM_REGISTRY_GITHUB_CICD_CERT: ${{ inputs.anio-cert }}
-        ANIO_NPM_REGISTRY_GITHUB_CICD_PKEY: ${{ inputs.anio-pkey }}
       shell: bash
       run: |
-        touch ./.cicd/client.cert
-        touch ./.cicd/client.pkey
-        chmod 0600 ./.cicd/client.cert ./.cicd/client.pkey
-        printf "%s" "$ANIO_NPM_REGISTRY_GITHUB_CICD_CERT" > ./.cicd/client.cert
-        printf "%s" "$ANIO_NPM_REGISTRY_GITHUB_CICD_PKEY" > ./.cicd/client.pkey
-        openssl x509 -in ./.cicd/client.cert -noout -text
+        mkdir ./secrets/
+        chmod 0700 ./secrets/
 
-    - name: "Setup npmrc file"
-      shell: bash
-      run: |
-        printf "" > ./.cicd/npmrc
+        touch ./secrets/npm_client.pkey
+        touch ./secrets/npm_client.cert
+        touch ./secrets/anio_npm_auth_token
+        touch ./secrets/npm_auth_token
 
-        printf "%s\n" "registry=https://registry.npmjs.org" >> ./.cicd/npmrc
-        printf "%s\n" "@asint:registry=https://npm-registry.anio.software" >> ./.cicd/npmrc
-        printf "%s\n" "@asint-types:registry=https://npm-registry.anio.software" >> ./.cicd/npmrc
-        printf "%s\n" "//npm-registry.anio.software/:keyfile=../../.cicd/client.pkey" >> ./.cicd/npmrc
-        printf "%s\n" "//npm-registry.anio.software/:certfile=../../.cicd/client.cert" >> ./.cicd/npmrc
+        chmod 0600 ./secrets/npm_client.pkey
+        chmod 0600 ./secrets/npm_client.cert
+        chmod 0600 ./secrets/anio_npm_auth_token
+        chmod 0600 ./secrets/npm_auth_token
 
-        if [[ "${{ github.ref_name }}" == vp* ]]; then
-          printf "%s\n" "//registry.npmjs.org/:_authToken=${{ inputs.npm-token }}" >> ./.cicd/npmrc
-        else
-          printf "%s\n" "//npm-registry.anio.software/:_authToken=${{ inputs.anio-registry-token }}" >> ./.cicd/npmrc
-        fi
+        printf "%s" "${{ inputs.anio-pkey }}" > ./secrets/npm_client.pkey
+        printf "%s" "${{ inputs.anio-cert }}" > ./secrets/npm_client.cert
+        printf "%s" "${{ inputs.anio-registry-token }}" > ./secrets/anio_npm_auth_token
+        printf "%s" "${{ inputs.npm-token }}" > ./secrets/npm_auth_token
+
+        openssl x509 -in ./secrets/npm_client.cert -noout -text
+
+        ls -la ./secrets/
