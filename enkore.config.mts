@@ -14,7 +14,7 @@ export const config: unknown = createConfig({
 			npm: {
 				registry: [{
 					url: "https://registry.npmjs.org/",
-					authTokenFilePath: "./secrets/anio_npm_auth_token"
+					authTokenFilePath: "./secrets/npm_auth_token"
 				}, {
 					url: "https://npm-registry.anio.software/",
 					scope: ["@asint", "@asint-types"],
