@@ -1,7 +1,7 @@
 import {
 	createConfig,
 	createTargetJSNodeOptions
-} from "enkore/spec/factory"
+} from "@asint/enkore/spec/factory"
 
 const isPublicRelease = (
 	process.env?.RELEASE_VERSION ?? ""
