@@ -12,7 +12,16 @@ export const config: unknown = createConfig({
 		name: "js-node",
 		options: createTargetJSNodeOptions({
 			npm: {
-				configFilePath: "./.cicd/npmrc"
+				registry: [{
+					url: "https://registry.npmjs.org/",
+					authTokenFilePath: "./secrets/anio_npm_auth_token"
+				}, {
+					url: "https://npm-registry.anio.software/",
+					scope: ["@asint", "@asint-types"],
+					clientPrivateKeyFilePath: "./secrets/npm_client.pkey",
+					clientCertificateFilePath: "./secrets/npm_client.cert",
+					authTokenFilePath: "./secrets/anio_npm_auth_token"
+				}]
 			},
 			// needed or we end up with a broken build
 			preprocess: {
