@@ -15,8 +15,8 @@
     "@enkore-private/target-js-typescript": "^0.0.2"
   },
   "devDependencies": {
-    "@asint/enkore": "^0.0.43",
-    "@asint/enkore__core": "^0.8.5",
-    "@asint/enkore-target__js-node": "^0.0.27"
+    "@anio-software/enkore": "^0.0.52",
+    "@anio-software/enkore.core": "^0.9.2",
+    "@anio-software/enkore.target-js-node": "^0.0.29"
   }
 }
