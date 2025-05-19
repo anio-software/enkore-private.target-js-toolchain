@@ -17,9 +17,9 @@ export const config: unknown = createConfig({
 			},
 
 			externalPackages: [
-				"@enkore-private/target-js-typescript",
-				"@enkore-private/target-js-babel",
-				"@enkore-private/target-js-rollup"
+				"@anio-software/enkore-private.target-js-typescript",
+				"@anio-software/enkore-private.target-js-babel",
+				"@anio-software/enkore-private.target-js-rollup"
 			],
 
 			publishWithExactDependencyVersions: true,
