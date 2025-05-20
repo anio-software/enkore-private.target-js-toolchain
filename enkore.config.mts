@@ -42,7 +42,7 @@ export const config: unknown = createConfig({
 			publish: [{
 				registry: "anioSoftware"
 			}, {
-				packageName: "@anio-software/enkore-types.target-js-toolchain",
+				packageName: "<FQPN>_types",
 				registry: "anioSoftware",
 				packageContents: "projectTypes"
 			}]
