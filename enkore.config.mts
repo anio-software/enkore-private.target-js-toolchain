@@ -3,10 +3,6 @@ import {
 	createTargetJSNodeOptions
 } from "@anio-software/enkore/spec/factory"
 
-const isPublicRelease = (
-	process.env?.RELEASE_VERSION ?? ""
-).startsWith("vp")
-
 export const config: unknown = createConfig({
 	target: {
 		name: "js-node",
