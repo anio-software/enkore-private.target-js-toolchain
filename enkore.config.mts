@@ -40,7 +40,6 @@ export const config: unknown = createConfig({
 			},
 
 			publish: [{
-				packageName: "@anio-software/enkore.target-js-toolchain",
 				registry: "anioSoftware"
 			}, {
 				packageName: "@anio-software/enkore-types.target-js-toolchain",
