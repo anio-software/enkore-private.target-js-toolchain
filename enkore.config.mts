@@ -15,7 +15,8 @@ export const config: unknown = createConfig({
 			externalPackages: [
 				"@anio-software/enkore-private.target-js-typescript",
 				"@anio-software/enkore-private.target-js-babel",
-				"@anio-software/enkore-private.target-js-rollup"
+				"@anio-software/enkore-private.target-js-rollup",
+				"lightningcss"
 			],
 
 			publishWithExactDependencyVersions: true,
