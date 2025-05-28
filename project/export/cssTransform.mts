@@ -1,6 +1,4 @@
 import {transform} from "lightningcss"
-import path from "node:path"
-import fs from "node:fs"
 
 type Result = {
 	code: string
@@ -9,13 +7,12 @@ type Result = {
 
 export async function cssTransform(
 	projectRoot: string,
-	inputFilePath: string
+	code: string,
+	fileName: string
 ): Promise<Result> {
-	const absoluteFilePath = path.join(projectRoot, inputFilePath)
-
 	const transformed = transform({
-		filename: absoluteFilePath,
-		code: fs.readFileSync(absoluteFilePath),
+		filename: fileName,
+		code: Buffer.from(code),
 		cssModules: true,
 		projectRoot
 	})
