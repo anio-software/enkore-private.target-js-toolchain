@@ -13,7 +13,7 @@ export async function cssTransform(
 ): Promise<Result> {
 	const absoluteFilePath = path.join(projectRoot, inputFilePath)
 
-	const {code, exports} = transform({
+	const transformed = transform({
 		filename: absoluteFilePath,
 		code: fs.readFileSync(absoluteFilePath),
 		cssModules: true,
@@ -22,16 +22,16 @@ export async function cssTransform(
 
 	const classNames: Record<string, string> = {}
 
-	if (exports) {
-		for (const className in exports) {
-			const cssExport = exports[className]
+	if (transformed.exports) {
+		for (const className in transformed.exports) {
+			const cssExport = transformed.exports[className]
 
 			classNames[className] = cssExport.name
 		}
 	}
 
 	return {
-		code: code.toString(),
+		code: transformed.code.toString(),
 		classNames
 	}
 }
