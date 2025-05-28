@@ -4,7 +4,7 @@ import fs from "node:fs"
 
 type Result = {
 	code: string
-	cssClassNames: Record<string, string>
+	classNames: Record<string, string>
 }
 
 export async function cssTransform(
@@ -20,18 +20,18 @@ export async function cssTransform(
 		projectRoot
 	})
 
-	const cssClassNames: Record<string, string> = {}
+	const classNames: Record<string, string> = {}
 
 	if (exports) {
 		for (const className in exports) {
 			const cssExport = exports[className]
 
-			cssClassNames[className] = cssExport.name
+			classNames[className] = cssExport.name
 		}
 	}
 
 	return {
 		code: code.toString(),
-		cssClassNames
+		classNames
 	}
 }
