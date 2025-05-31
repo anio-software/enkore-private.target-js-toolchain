@@ -5,15 +5,22 @@ type Result = {
 	classNames: Record<string, string>
 }
 
+type LightningCSSOptions = {
+	fileName: string
+	cssModulesPattern: string
+}
+
 export async function cssTransform(
 	projectRoot: string,
 	code: string,
-	fileName: string
+	options: LightningCSSOptions
 ): Promise<Result> {
 	const transformed = transform({
-		filename: fileName,
+		filename: options.fileName,
 		code: Buffer.from(code),
-		cssModules: true,
+		cssModules: {
+			pattern: options.cssModulesPattern
+		},
 		projectRoot
 	})
 
