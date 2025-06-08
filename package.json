@@ -17,7 +17,7 @@
   "dependencies": {
     "@anio-software/enkore-private.target-js-babel": "^0.0.8",
     "@anio-software/enkore-private.target-js-rollup": "^0.0.6",
-    "@anio-software/enkore-private.target-js-typescript": "^0.0.7",
+    "@anio-software/enkore-private.target-js-typescript": "^0.0.8",
     "lightningcss": "^1.30.1"
   }
 }
